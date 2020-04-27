@@ -81,6 +81,21 @@
 		var id = $("#id").val();
 		$.post("./memberIdCheck", {id:id}, function(data) {
 			alert(data);
+			
+			$.ajax({
+				type: "post", //method 형식
+				url : "./memberIdCheck", //URL 주소
+				data : {
+					id: id
+				}, //parameter 
+				success : function(data) {
+					alert(data);
+				},
+				error : function() {
+					alert("error 발생");
+				}//최종결과가 200이 아니라 400~500가 왔을 때
+				
+			})
 		});
 	});
 </script>

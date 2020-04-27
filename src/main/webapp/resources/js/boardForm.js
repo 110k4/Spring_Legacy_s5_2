@@ -25,7 +25,7 @@
 	$("#btn").click(function() {
 		//title, contents 데이터 유무 검증
 		var title = $("#title").val();
-		var contents = $("#contents").val();
+		var contents = $("#contents").summernote('code');
 		/* console.log(title=='');
 		console.log(contents=="");
 		console.log(title.length);
@@ -35,7 +35,7 @@
 		console.log($("#contents").summernote('isEmpty')); */
 		var ch3 = true;
 		$(".files").each(function() {
-			if($(this).val==()) {
+			if($(this).val()=="") {
 				ch3 = false;
 			}
 			
@@ -46,6 +46,7 @@
 		
 		if(ch1 && !ch2 && ch3) {
 			//form 전송(submit event 강제 발생)
+			
 			$("#frm").submit();
 			
 		}else {

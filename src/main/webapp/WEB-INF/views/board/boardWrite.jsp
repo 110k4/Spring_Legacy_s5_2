@@ -22,30 +22,28 @@
 		  </div>
 		  <div class="form-group">
 		    <label for="writer">Writer:</label>
-		    <input type="text" class="form-control" id="writer" name="writer" value = "${member.id}" readonly="readonly">
+		    <input type="text" class="form-control" id="writer" value="${member.id}" readonly="readonly" name="writer">
 		  </div>
 		 <div class="form-group" >
 		    <label for="contents">Contents:</label>
 		    <textarea rows="20" cols="" class="form-control" id="contents" name="contents"></textarea>
 		  </div> 
 		  
-		  <div class="form-group">
-		 	  <label for="file">File:</label>
-			  <input type = "button" id = "add" class = "btn btn-info" value = "AddFile">
-		  </div> 
+		  <input type="button" id="add" class="btn btn-info" value="AddFile">
+		  <div id="file">
+			  
+		  </div>
+ 		<!-- contents Server null이 될때 
+ 		  <input type="hidden" name="contents" id="con">
+ 		--> 
 		  
-		   <div id = "file">
-		   </div>
-		   
-		   
 		  
-		  <input type="button" id="btn" class="btn btn-default" value="Write" >
+		  <input type="button" id="btn" class="btn btn-default" value="Write">
 		</form>
 		
 	</div>
-	
+<script type="text/javascript" src="../resources/js/boardForm.js">
 
-<script type="text/javascript" src = "../resources/js/boardForm.js">
-</script>
+</script>	
 </body>
 </html>

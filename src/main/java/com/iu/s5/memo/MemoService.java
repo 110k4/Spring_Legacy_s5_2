@@ -21,6 +21,8 @@ public class MemoService {
 	
 	public int memoInsert(MemoVO memoVO) throws Exception {
 		return memoDAO.memoInsert(memoVO);
+		
+		
 	}
 
 }

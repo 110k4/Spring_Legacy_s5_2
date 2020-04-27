@@ -13,4 +13,7 @@ public class BoardFileService {
 		return boardFileDAO.fileSelect(boardFileVO);
 	}
 
+	public int fileDlete(long fileNum) throws Exception {
+		return boardFileDAO.fileDelete(fileNum);
+	}
 }
