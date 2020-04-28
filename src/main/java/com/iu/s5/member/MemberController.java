@@ -7,7 +7,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.tribes.membership.MemberImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,12 +29,12 @@ public class MemberController {
 	private MemberService memberService;
 	
 	@PostMapping("memberIdCheck")
-	public ModelAndView memberIdCheck(MemberVO memberVO) throws Exception {
+	public ModelAndView memberIdCheck(MemberVO memberVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		memberVO = memberService.memberIdCheck(memberVO);
-		//null -> 가입 가능 (1)
-		//null x -> 중복 (0)
-		int result = 0;
+		//null -> 가입 가능 1
+		//null 이 아니면 중복 0
+		int result=0;
 		if(memberVO == null) {
 			result = 1;
 		}
@@ -43,7 +42,16 @@ public class MemberController {
 		mv.setViewName("common/ajaxResult");
 		
 		return mv;
-		
+	}
+	
+	@GetMapping("memberLists")
+	public ModelAndView memberLists(Pager pager)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<MemberVO> ar = memberService.memberList(pager);
+		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
+		mv.setViewName("member/memberLists");
+		return mv;
 	}
 	
 	@RequestMapping(value="memberList", method = RequestMethod.GET)
@@ -175,41 +183,25 @@ public class MemberController {
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		memberService.fileDelete(memberVO.getId(), session);
 		return "redirect:./memberPage";
-		
 	}
 	
 	@GetMapping("memberDeletes")
-	public ModelAndView memberDeletes(String [] ids) throws Exception {
+	public ModelAndView memberDeletes(String [] ids)throws Exception{
 		//배열을 List로 변환
 		ModelAndView mv = new ModelAndView();
-		System.out.println(ids[0]);
 		List<String> list = Arrays.asList(ids);
 		int result = memberService.memberDeletes(list);
 		mv.addObject("result", result);
 		mv.setViewName("common/ajaxResult");
-				
 		return mv;
-		
-		}
-	@GetMapping("memberLists")
-	public ModelAndView memberLists(Pager pager) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		List<MemberVO> ar = memberService.memberList(pager);
-		mv.addObject("list", ar);
-		mv.addObject("pager", pager);
-		mv.setViewName("member/memberLists");
-		return mv;
-	
-	
-				
-//		for(String id : ids) {
-//			MemberVO memberVO = new MemberVO();
-//			memberVO.setId(id);
-//			memberService.memberDelete(memberVO);
-//			
-//		}
 	}
 	
-	
-	
 }
+
+
+
+
+
+
+
+

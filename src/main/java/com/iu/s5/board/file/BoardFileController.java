@@ -11,29 +11,25 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/boardFile/**")
 public class BoardFileController {
 	@Autowired
-	private BoardFileService boarFileService;
+	private BoardFileService boardFileService;
 	
 	@PostMapping("fileDelete")
-	public ModelAndView fileDelete(long fileNum) throws Exception {
+	public ModelAndView fileDelete(BoardFileVO boardFileVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = boarFileService.fileDlete(fileNum);
+		int result = boardFileService.fileDelete(boardFileVO);
 		mv.addObject("result", result);
 		mv.setViewName("common/ajaxResult");
 		return mv;
-		
 	}
 	
 	@GetMapping("fileDown")
-	public ModelAndView fileDown(BoardFileVO boardFileVO) throws Exception {
+	public ModelAndView fileDown(BoardFileVO boardFileVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		boardFileVO = boarFileService.fileSelect(boardFileVO);
+		boardFileVO = boardFileService.fileSelect(boardFileVO);
 		mv.addObject("file", boardFileVO);
 		mv.setViewName("fileDown");
 		System.out.println("test");
 		return mv;
-		
-		
-	
 	}
 
 }

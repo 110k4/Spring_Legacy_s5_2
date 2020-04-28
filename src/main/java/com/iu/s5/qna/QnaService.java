@@ -12,7 +12,6 @@ import com.iu.s5.board.BoardService;
 import com.iu.s5.board.BoardVO;
 import com.iu.s5.board.file.BoardFileDAO;
 import com.iu.s5.board.file.BoardFileVO;
-import com.iu.s5.notice.NoticeDAO;
 import com.iu.s5.util.FileSaver;
 import com.iu.s5.util.Pager;
 
@@ -25,7 +24,7 @@ public class QnaService implements BoardService {
 	private FileSaver fileSaver;
 	@Autowired
 	private BoardFileDAO boardFileDAO;
-	@Autowired
+	//@Autowired
 	private ServletContext servletContext;
 	
 	public int boardReply(BoardVO boardVO)throws Exception{
@@ -51,10 +50,10 @@ public class QnaService implements BoardService {
 
 	@Override
 	public int boardWrite(BoardVO boardVO, MultipartFile [] files) throws Exception {
-		//1. squence num qna tavle insert
+		//1. sequnce num  qna table insert
 		int result = qnaDAO.boardWrite(boardVO);
-		
-		//2. HDD에 파일 저장하고 boardFile table insert
+				
+		//3. HDD에 파일저장하고 boardFile table insert
 		String path = servletContext.getRealPath("/resources/uploadQna");
 		
 		for(MultipartFile file: files) {
@@ -66,7 +65,9 @@ public class QnaService implements BoardService {
 			boardFileVO.setBoard(2);
 			boardFileDAO.fileInsert(boardFileVO);
 		}
-		return qnaDAO.boardWrite(boardVO);
+		
+		
+		return result;
 	}
 
 	@Override

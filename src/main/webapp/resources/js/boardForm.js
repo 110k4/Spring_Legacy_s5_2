@@ -4,6 +4,11 @@
 
 	var count = 1;
 	
+	function setCount(c) {
+		count = count+c;
+		
+	}
+	
 	$("#file").on("click", ".remove", function() {
 		$(this).parent().remove();
 		count--;
@@ -57,6 +62,12 @@
 	});
 
 	//$("선택자").action();
-	$("#contents").summernote({
-		height: 400
-	});
+//	$("#contents").summernote({
+//		height: 300,
+//		callbacks: {
+//			onImageUpload: function(file) {
+//				console.log("upload");
+//			}
+//			
+//		}
+//	});

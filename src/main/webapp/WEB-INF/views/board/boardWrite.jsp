@@ -33,6 +33,8 @@
 		  <div id="file">
 			  
 		  </div>
+		  
+		  
  		<!-- contents Server null이 될때 
  		  <input type="hidden" name="contents" id="con">
  		--> 
@@ -42,8 +44,21 @@
 		</form>
 		
 	</div>
-<script type="text/javascript" src="../resources/js/boardForm.js">
+	
+<!-- <script type="text/javascript" src="../resources/js/boardForm.js"> </script>-->
+	
+	<script type="text/javascript">
+		$("#contents").summernote({
+			height: 300,
+			callbacks: {
+				onImageUpload: function(file) {
+					console.log("upload");
+				}
+				
+			}
+		});
+	</script>
+	
 
-</script>	
 </body>
 </html>

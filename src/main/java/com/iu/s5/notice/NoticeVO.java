@@ -7,7 +7,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.iu.s5.board.BoardVO;
 import com.iu.s5.board.file.BoardFileVO;
 
-
 public class NoticeVO extends BoardVO {
 	
 	private List<BoardFileVO> boardFileVOs;
@@ -19,6 +18,7 @@ public class NoticeVO extends BoardVO {
 	public void setBoardFileVOs(List<BoardFileVO> boardFileVOs) {
 		this.boardFileVOs = boardFileVOs;
 	}
+	
 	
 	
 	//private BoardVO boardVO

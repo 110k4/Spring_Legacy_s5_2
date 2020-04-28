@@ -23,9 +23,9 @@ public class MemberService {
 	@Autowired
 	private MemberFileDAO memberFileDAO;
 	
-	public MemberVO memberIdCheck(MemberVO memberVO) throws Exception {
+	
+	public MemberVO memberIdCheck(MemberVO memberVO)throws Exception{
 		return memberDAO.memberIdCheck(memberVO);
-		
 	}
 	
 	public List<MemberVO> memberList(Pager memberPager)throws Exception{
@@ -78,7 +78,7 @@ public class MemberService {
 		return result;
 	}
 	
-	public int memberDeletes(List<String> list) throws Exception {
+	public int memberDeletes(List<String> list)throws Exception{
 		return memberDAO.memberDeletes(list);
 	}
 
